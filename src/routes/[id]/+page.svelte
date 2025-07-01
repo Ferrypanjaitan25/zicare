@@ -24,7 +24,7 @@
 
   let prodiOptions = [
     'Sistem Informasi',
-    'Teknik Informatika',
+    'Teknologi Informasi',
     'Sarjana Terapan Rekayasa Perangkat Lunak',
     'Teknik Komputer',
     'Teknik Elektro',

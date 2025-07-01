@@ -6,7 +6,7 @@
 
   let nim = '', nama = '', email = '', noHp = '', prodi = '';
   let prodiOptions = [
-    'Sistem Informasi', 'Teknik Informatika', 'Sarjana Terapan Rekayasa Perangkat Lunak',
+    'Sistem Informasi', 'Teknologi Informasi', 'Sarjana Terapan Rekayasa Perangkat Lunak',
     'Teknik Komputer', 'Teknik Elektro', 'Informatika', 'Teknik Bioproses',
     'Metalurgi', 'Manajemen Rekayasa'
   ];
