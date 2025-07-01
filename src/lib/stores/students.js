@@ -9,6 +9,7 @@ export const studentsStore = writable([
     email: 'iss22027@students.del.ac.id',
     noHp: '081260900151'
   },
+  
   {
     id: 2,
     nim: '14S23024',
