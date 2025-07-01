@@ -9,7 +9,7 @@ export const studentsStore = writable([
     email: 'iss22027@students.del.ac.id',
     noHp: '081260900151'
   },
-  
+
   {
     id: 2,
     nim: '11S22013',
@@ -32,7 +32,7 @@ export const studentsStore = writable([
     nama: 'Rejeki Sitorus',
     prodi: 'Manajemen Rekayasa',
     email: 'mrs22040@students.del.ac.id',
-    noHp: '081234567890'
+    noHp: '081234560978'
   },
   {
     id: 5,
@@ -40,38 +40,38 @@ export const studentsStore = writable([
     nama: 'Morlin Siahaan',
     prodi: 'Teknik Komputer',
     email: 'ce22025@students.del.ac.id',
-    noHp: '081234567890'
+    noHp: '081265437890'
   },
   {
     id: 6,
     nim: '22S23061',
     nama: 'Johan Hutabarat',
-    prodi: 'Teknik Metalurgi',
-    email: 'tms22061@students.del.ac.id',
-    noHp: '081234567890'
+    prodi: 'Metalurgi',
+    email: 'tms23061@students.del.ac.id',
+    noHp: '081234561234'
   },
   {
     id:7,
-    nim: '31S22040',
-    nama: 'Stevanus Hutabarat',
+    nim: '31S22035',
+    nama: 'Dimas Prasetyo',
     prodi: 'Teknik Bioproses',
-    email: 'bps22040@students.del.ac.id',
-    noHp: '081234567890'
+    email: 'bps22035@students.del.ac.id',
+    noHp: '081267895432'
   },
   {
     id: 8,
     nim: '11422040',
-    nama: 'Stevanus Hutabarat',
-    prodi: 'Teknik Rekaya Perangkat Lunak',
+    nama: 'Ricky Simanjuntak',
+    prodi: 'Sarjana Terapan Rekayasa Perangkat Lunak',
     email: 'if422040@students.del.ac.id',
-    noHp: '081234567890'
+    noHp: '081234567891'
   },
   {
     id: 9,
     nim: '11322024',
-    nama: 'Stevanus Hutabarat',
-    prodi: 'Teknik Elektro',
-    email: 'ti22040@students.del.ac.id',
-    noHp: '081234567890'
+    nama: 'Christian Panjaitan',
+    prodi: 'Teknologi Informasi',
+    email: 'if1322024@students.del.ac.id',
+    noHp: '081234567899'
   }
 ]);
