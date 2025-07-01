@@ -11,10 +11,10 @@ export const studentsStore = writable([
   },
   {
     id: 2,
-    nim: '12S22013',
-    nama: 'Christoffel Theofani Napitupulu',
-    prodi: 'Sistem Informasi',
-    email: '12S22013@students.del.ac.id',
-    noHp: '082168249280'
+    nim: '14S23024',
+    nama: 'Cardolan Sinaga',
+    prodi: 'Teknik Elektro',
+    email: '14S23024@students.del.ac.id',
+    noHp: '082112345678'
   }
 ]);
