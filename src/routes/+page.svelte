@@ -32,7 +32,7 @@
       }));
       applyFilter();
     });
-  });
+  }); 
 
   function applyFilter() {
     filteredStudents = students.filter(student => {
