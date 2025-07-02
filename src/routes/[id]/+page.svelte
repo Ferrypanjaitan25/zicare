@@ -4,34 +4,18 @@
   import { goto } from '$app/navigation';
   import { onMount } from 'svelte';
   import { get } from 'svelte/store';
-  import Notification from '$lib/components/Notification.svelte';
+  import StudentForm from '$lib/components/StudentForm.svelte';
+  import Sidebar from '$lib/components/Sidebar.svelte';
   import jsPDF from 'jspdf';
 
-  /**
-   * @typedef {Object} Student
-   * @property {number} id
-   * @property {string} nim
-   * @property {string} nama
-   * @property {string} email
-   * @property {string} noHp
-   * @property {string} prodi
-   */
-
-  /** @type {Student | null} */
   let student = null;
   let errorMessage = '';
   let successMessage = '';
 
   let prodiOptions = [
-    'Sistem Informasi',
-    'Teknik Informatika',
-    'Sarjana Terapan Rekayasa Perangkat Lunak',
-    'Teknik Komputer',
-    'Teknik Elektro',
-    'Informatika',
-    'Teknik Bioproses',
-    'Metalurgi',
-    'Manajemen Rekayasa'
+    'Sistem Informasi', 'Teknik Informatika', 'Sarjana Terapan Rekayasa Perangkat Lunak',
+    'Teknik Komputer', 'Teknik Elektro', 'Informatika', 'Teknik Bioproses',
+    'Metalurgi', 'Manajemen Rekayasa'
   ];
 
   onMount(() => {
@@ -75,7 +59,6 @@
 
     const confirmEdit = confirm('Simpan perubahan data ini?');
     if (confirmEdit && student) {
-      // Ensure all required properties are present and non-optional
       const updatedStudent = {
         id: student.id,
         nim: student.nim,
@@ -101,7 +84,7 @@
     logo.src = '/logo-del.png';
 
     logo.onload = () => {
-      if (!student) return; // Extra null check for type safety
+      if (!student) return;
       doc.addImage(logo, 'PNG', 10, 10, 30, 30);
 
       doc.setFontSize(16);
@@ -123,62 +106,29 @@
   }
 </script>
 
-{#if student}
-  <div class="p-6 max-w-xl mx-auto space-y-4">
-    <h1 class="text-2xl font-bold text-center">Detail Mahasiswa</h1>
-
-    {#if errorMessage}
-      <Notification message={errorMessage} type="error" />
-    {/if}
-
-    {#if successMessage}
-      <Notification message={successMessage} type="success" />
-    {/if}
-
-    <form on:submit|preventDefault={handleEdit} class="space-y-4">
-      <input
-        bind:value={student.nim}
-        class="w-full border p-2 rounded"
-        placeholder="NIM"
-        minlength="8"
-        maxlength="10"
-        required
+<div class="flex">
+  <Sidebar />
+  {#if student}
+    <div class="ml-64 p-6 max-w-xl mx-auto space-y-4 flex-1">
+      <h1 class="text-2xl font-bold text-center">Detail Mahasiswa</h1>
+      <StudentForm
+        bind:student
+        {prodiOptions}
+        {errorMessage}
+        {successMessage}
+        onSubmit={handleEdit}
       />
-      <input
-        bind:value={student.nama}
-        class="w-full border p-2 rounded"
-        placeholder="Nama Lengkap"
-        required
-      />
-      <select bind:value={student.prodi} class="w-full border p-2 rounded" required>
-        <option value="">Pilih Program Studi</option>
-        {#each prodiOptions as option}
-          <option value={option}>{option}</option>
-        {/each}
-      </select>
-      <input
-        bind:value={student.email}
-        class="w-full border p-2 rounded"
-        placeholder="Email"
-        required
-      />
-      <input
-        bind:value={student.noHp}
-        class="w-full border p-2 rounded"
-        placeholder="No HP"
-        required
-      />
-
-      <div class="flex gap-4">
-        <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
-          Simpan Perubahan
-        </button>
-        <button type="button" on:click={downloadPDF} class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
-          ⬇️ Download Data
-        </button>
-      </div>
-    </form>
-  </div>
-{:else}
-  <p class="text-center mt-6 text-gray-500">Data mahasiswa tidak ditemukan.</p>
-{/if}
+      <button
+        type="button"
+        on:click={downloadPDF}
+        class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition"
+      >
+        ⬇️ Download Data
+      </button>
+    </div>
+  {:else}
+    <div class="ml-64 p-6 max-w-xl mx-auto space-y-4 flex-1">
+      <p class="text-center mt-6 text-gray-500">Data mahasiswa tidak ditemukan.</p>
+    </div>
+  {/if}
+</div>
