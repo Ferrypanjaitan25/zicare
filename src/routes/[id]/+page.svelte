@@ -39,6 +39,13 @@
       return;
     }
 
+    // Validasi nama hanya huruf dan spasi
+    const namaPattern = /^[a-zA-Z\s]+$/;
+    if (!namaPattern.test(student.nama)) {
+      errorMessage = 'Nama hanya boleh berisi huruf dan spasi!';
+      return;
+    }
+
     const nimLength = student.nim.trim().length;
     if (nimLength < 8 || nimLength > 10) {
       errorMessage = 'NIM harus terdiri dari 8 hingga 10 karakter!';

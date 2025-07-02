@@ -3,7 +3,7 @@
 </script>
 
 <aside class="w-64 bg-gray-800 text-white h-screen p-4 fixed top-0 left-0 flex flex-col gap-4">
-  <h2 class="text-xl font-bold mb-4">Menu</h2>
+  <h2 class="text-xl font-bold mb-4">Detail Mahasiswa</h2>
   <nav class="flex flex-col gap-2">
     <a
       href="/tambah"

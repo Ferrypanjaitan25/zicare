@@ -7,7 +7,7 @@
 
   let student = { nim: '', nama: '', email: '', noHp: '', prodi: '' };
   let prodiOptions = [
-    'Sistem Informasi', 'Teknik Informatika', 'Sarjana Terapan Rekayasa Perangkat Lunak',
+    'Sistem Informasi', 'Teknologi Informasi', 'Sarjana Terapan Rekayasa Perangkat Lunak',
     'Teknik Komputer', 'Teknik Elektro', 'Informatika', 'Teknik Bioproses',
     'Metalurgi', 'Manajemen Rekayasa'
   ];
@@ -22,6 +22,13 @@
 
     if (!student.nim || !student.nama || !student.email || !student.noHp || !student.prodi) {
       errorMessage = 'Mohon lengkapi semua field!';
+      return;
+    }
+
+    // Validasi nama hanya huruf dan spasi
+    const namaPattern = /^[a-zA-Z\s]+$/;
+    if (!namaPattern.test(student.nama)) {
+      errorMessage = 'Nama hanya boleh berisi huruf dan spasi!';
       return;
     }
 
