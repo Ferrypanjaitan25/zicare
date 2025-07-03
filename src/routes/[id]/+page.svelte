@@ -113,29 +113,31 @@
   }
 </script>
 
-<div class="flex">
+<div class="flex min-h-screen">
   <Sidebar />
   {#if student}
-    <div class="ml-64 p-6 max-w-xl mx-auto space-y-4 flex-1">
-      <h1 class="text-2xl font-bold text-center">Detail Mahasiswa</h1>
-      <StudentForm
-        bind:student
-        {prodiOptions}
-        {errorMessage}
-        {successMessage}
-        onSubmit={handleEdit}
-      />
-      <button
-        type="button"
-        on:click={downloadPDF}
-        class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition"
-      >
-        ⬇️ Download Data
-      </button>
+    <div class="flex-1 flex items-center justify-center p-6 bg-gray-100">
+      <div class="w-full max-w-2xl">
+        <h1 class="text-2xl font-bold text-center mb-6">Detail Mahasiswa</h1>
+        <StudentForm
+          bind:student
+          {prodiOptions}
+          {errorMessage}
+          {successMessage}
+          onSubmit={handleEdit}
+        />
+        <button
+          type="button"
+          on:click={downloadPDF}
+          class="w-full mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition"
+        >
+          ⬇️ Download Data
+        </button>
+      </div>
     </div>
   {:else}
-    <div class="ml-64 p-6 max-w-xl mx-auto space-y-4 flex-1">
-      <p class="text-center mt-6 text-gray-500">Data mahasiswa tidak ditemukan.</p>
+    <div class="flex-1 flex items-center justify-center p-6 bg-gray-100">
+      <p class="text-center text-gray-500">Data mahasiswa tidak ditemukan.</p>
     </div>
   {/if}
 </div>

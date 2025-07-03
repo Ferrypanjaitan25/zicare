@@ -70,16 +70,18 @@
   }
 </script>
 
-<div class="flex">
+<div class="flex min-h-screen">
   <Sidebar />
-  <div class="ml-64 p-6 max-w-xl mx-auto space-y-4 flex-1">
-    <h1 class="text-2xl font-bold">Tambah Mahasiswa</h1>
-    <StudentForm
-      bind:student
-      {prodiOptions}
-      {errorMessage}
-      {successMessage}
-      onSubmit={handleSubmit}
-    />
+  <div class="flex-1 flex items-center justify-center p-6 bg-gray-100">
+    <div class="w-full max-w-2xl">
+      <h1 class="text-2xl font-bold text-center mb-6">Tambah Mahasiswa</h1>
+      <StudentForm
+        bind:student
+        {prodiOptions}
+        {errorMessage}
+        {successMessage}
+        onSubmit={handleSubmit}
+      />
+    </div>
   </div>
 </div>
