@@ -30,6 +30,7 @@
   {/if}
 
   <form on:submit|preventDefault={onSubmit} class="space-y-4">
+    <!--nim.svelte-->
     <div>
       <label for="nim" class="block text-sm font-medium text-gray-700">NIM</label>
       <input
@@ -43,6 +44,7 @@
       />
     </div>
 
+    <!--Nama.svelte-->
     <div>
       <label for="nama" class="block text-sm font-medium text-gray-700">Nama Lengkap</label>
       <input
@@ -55,6 +57,7 @@
       />
     </div>
 
+    <!--Prodi.svelte-->
     <div>
       <label for="prodi" class="block text-sm font-medium text-gray-700">Program Studi</label>
       <select
@@ -70,6 +73,7 @@
       </select>
     </div>
 
+    <!--Email.svelte-->
     <div>
       <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
       <input
@@ -81,6 +85,7 @@
       />
     </div>
 
+    <!--noHp.svelte-->
     <div>
       <label for="noHp" class="block text-sm font-medium text-gray-700">No. HP</label>
       <input

@@ -13,7 +13,7 @@
   let successMessage = '';
 
   let prodiOptions = [
-    'Sistem Informasi', 'Teknik Informatika', 'Sarjana Terapan Rekayasa Perangkat Lunak',
+    'Sistem Informasi', 'Teknologi Informasi', 'Sarjana Terapan Rekayasa Perangkat Lunak',
     'Teknik Komputer', 'Teknik Elektro', 'Informatika', 'Teknik Bioproses',
     'Metalurgi', 'Manajemen Rekayasa'
   ];
