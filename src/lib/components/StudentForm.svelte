@@ -1,23 +1,13 @@
 <script>
   import Notification from './Notification.svelte';
+  import NamaInput from './NamaInput.svelte';
+  import NoHpInput from './NoHpInput.svelte';
 
   export let student = { nim: '', nama: '', prodi: '', email: '', noHp: '' };
   export let prodiOptions = [];
   export let onSubmit = () => {};
   export let errorMessage = '';
   export let successMessage = '';
-
-  function handleInputNama(e) {
-    // Hanya izinkan huruf dan spasi
-    const hurufSaja = e.target.value.replace(/[^a-zA-Z\s]/g, '');
-    student.nama = hurufSaja;
-  }
-
-  function handleInputNoHp(e) {
-    // Hanya izinkan angka
-    const angka = e.target.value.replace(/\D/g, '');
-    student.noHp = angka;
-  }
 </script>
 
 <div class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-md border border-gray-200">
@@ -46,17 +36,7 @@
           />
         </div>
 
-        <div>
-          <label for="nama" class="block text-sm font-medium text-gray-700">Nama Lengkap</label>
-          <input
-            id="nama"
-            bind:value={student.nama}
-            on:input={handleInputNama}
-            class="w-full border p-2 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-300"
-            placeholder="Nama Lengkap"
-            required
-          />
-        </div>
+        <NamaInput bind:value={student.nama} />
 
         <div>
           <label for="prodi" class="block text-sm font-medium text-gray-700">Program Studi</label>
@@ -87,22 +67,7 @@
           />
         </div>
 
-        <div>
-          <label for="noHp" class="block text-sm font-medium text-gray-700">No. HP</label>
-          <input
-            id="noHp"
-            type="text"
-            bind:value={student.noHp}
-            on:input={handleInputNoHp}
-            class="w-full border p-2 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-300"
-            placeholder="No HP"
-            required
-            minlength="11"
-            maxlength="13"
-            inputmode="numeric"
-            pattern="\d*"
-          />
-        </div>
+        <NoHpInput bind:value={student.noHp} />
       </div>
     </div>
 
