@@ -87,6 +87,7 @@
             <tr>
               <th class="px-4 py-3">NIM</th>
               <th class="px-4 py-3">Nama</th>
+              <th class="px-4 py-3">Tempat Lahir</th>
               <th class="px-4 py-3">Prodi</th>
               <th class="px-4 py-3">Email</th>
               <th class="px-4 py-3">No. HP</th>
@@ -98,6 +99,7 @@
               <tr class="border-t hover:bg-gray-50 transition">
                 <td class="px-4 py-2">{student.nim}</td>
                 <td class="px-4 py-2">{student.nama}</td>
+                <td class="px-4 py-2">{student.tempatLahir}</td>
                 <td class="px-4 py-2">{student.prodi}</td>
                 <td class="px-4 py-2">{student.email}</td>
                 <td class="px-4 py-2">{student.noHp}</td>
