@@ -2,6 +2,7 @@
 	import Notification from './Notification.svelte';
 	import Inputnumberonly from './InputNumberOnly.svelte';
 	import InputTextOnly from './InputTextOnly.svelte';
+	import InputSelect from './InputSelect.svelte'; 
 
 	export let student = {
 		nim: '',
@@ -58,20 +59,14 @@
 
 		 <!-- Kolom Kanan: Prodi, Email, No. HP -->
       <div class="space-y-4">
-        <div>
-          <label for="prodi" class="block text-sm font-medium text-gray-700">Program Studi</label>
-          <select
-            id="prodi"
-            bind:value={student.prodi}
-            class="w-full rounded border p-2 shadow-sm focus:ring-2 focus:ring-blue-300 focus:outline-none"
-            required
-          >
-            <option value="">Pilih Program Studi</option>
-            {#each prodiOptions as option}
-              <option value={option}>{option}</option>
-            {/each}
-          </select>
-        </div>
+        
+        <InputSelect
+          bind:value={student.prodi}
+          fieldLabel="prodi"
+          fieldName="Program Studi"
+          options={prodiOptions}
+          isRequired={true}
+        />
 
         <div>
           <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
@@ -83,7 +78,9 @@
             required
           />
         </div>
-				<Inputnumberonly bind:value={student.noHp}
+				
+				<Inputnumberonly 
+          bind:value={student.noHp}
           fieldName="No. HP"
           fieldLabel="no-hp"
           isRequired={true} 
