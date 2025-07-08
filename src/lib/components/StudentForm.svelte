@@ -5,6 +5,7 @@
 	import InputSelect from './InputSelect.svelte'; 
   import InputFreeTextOnly from './InputFreeTextOnly.svelte';
   import DateInput from './DateInput.svelte';
+  import FlatpickrInput from './FlatpickrInput.svelte';
 
 	export let student = {
 		nim: '',
@@ -22,6 +23,7 @@
   export let onSubmit = () => {};
   export let errorMessage = '';
   export let successMessage = '';
+  let tanggalLahir ='';
     
 
 
@@ -67,13 +69,13 @@
           isRequired={true}
         />  
 
-        <DateInput
-         bind:value={student.tanggalLahir} 
-         fieldLabel="tanggal-lahir" 
-         fieldName="Tanggal Lahir"
-         isRequired={true}
+       <FlatpickrInput bind:value={student.tanggalLahir} 
+       fieldLabel = "Tanggal lahir"
+       fieldName = " tanggal-lahir"
+
        />
 
+   
 				<div>
 		
 				</div>
@@ -97,6 +99,7 @@
             fieldLabel="email"
             isRequired={true}
             inputType="email"
+            placeholder="Contoh:iss22027@student.del.ac.id"
           />
           
         </div>

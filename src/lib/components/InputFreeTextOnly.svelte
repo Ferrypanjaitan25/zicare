@@ -4,6 +4,7 @@
 	export let fieldLabel = '';
 	export let isRequired = false;
 	export let inputType = 'text'; 
+	 export let placeholder = '';
 
 	function handleInput(e) {
 		let filteredValue = e.target.value;
@@ -37,7 +38,7 @@
 		bind:value
 		on:input={handleInput}
 		class="w-full rounded border p-2 shadow-sm focus:ring-2 focus:ring-blue-300 focus:outline-none"
-		placeholder={fieldName}
+		placeholder={placeholder || fieldName}
 		required={isRequired}
 	/>
 </div>
