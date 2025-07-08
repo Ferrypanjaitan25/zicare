@@ -38,6 +38,7 @@
 		<Notification message={successMessage} type="success" />
 	{/if}
 
+<<<<<<< Updated upstream
 	<form on:submit|preventDefault={onSubmit} class="space-y-4">
     <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
       <!-- Kolom Kiri: NIM, Nama, Jenis Kelamin, Tempat Lahir, Tanggal Lahir -->
@@ -50,6 +51,9 @@
             fieldLabel="nim"
             isRequired={true}
             inputType="nim"
+=======
+  4
+>>>>>>> Stashed changes
           />
         </div>
 
