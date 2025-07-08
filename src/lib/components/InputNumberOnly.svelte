@@ -18,7 +18,7 @@
 		bind:value
 		on:input={handleInput}
 		class="w-full rounded border p-2 shadow-sm focus:ring-2 focus:ring-blue-300 focus:outline-none"
-        minlength="12"
+        minlength="2"
         maxlength="13"
 		placeholder={fieldName}
 		required={isRequired}

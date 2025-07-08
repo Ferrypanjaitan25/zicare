@@ -24,6 +24,11 @@
     'Manajemen Rekayasa'
   ];
 
+  let jenisKelaminOptions = [
+    'Laki-laki', 
+    'Perempuan'
+  ]; 
+
   onMount(() => {
     const id = +$page.params.id;
     studentsStore.subscribe(data => {
@@ -44,6 +49,9 @@
       !student.nim ||
       !student.nama ||
       !student.tempatLahir ||
+      !student.tanggalLahir ||
+      !student.jenisKelamin ||
+      !student.angkatan ||
       !student.email ||
       !student.noHp ||
       !student.prodi
@@ -64,6 +72,17 @@
       errorMessage = 'Tempat Lahir hanya boleh berisi huruf dan spasi!';
       return;
     }
+
+    if (!student.tanggalLahir) {
+      errorMessage = 'Tanggal Lahir tidak boleh kosong!';
+      return;
+    }
+
+    if (!student.angkatan) {
+      errorMessage = 'Angkatan tidak boleh kosong!';
+      return;
+    }
+
 
     const nimLength = student.nim.trim().length;
     if (nimLength < 8 || nimLength > 10) {
@@ -90,10 +109,15 @@
         nim: student.nim,
         nama: student.nama,
         tempatLahir: student.tempatLahir,
+        tanggalLahir: student.tanggalLahir,
+        jenisKelamin: student.jenisKelamin,
+        angkatan: student.angkatan,
         email: student.email,
         noHp: student.noHp,
-        prodi: student.prodi
+        prodi: student.prodi,
+       
       };
+      // @ts-ignore
       studentsStore.update(data => data.map(s => s.id === updatedStudent.id ? updatedStudent : s));
       successMessage = 'Data berhasil diperbarui!';
       setTimeout(() => goto('/'), 1000);
@@ -119,10 +143,12 @@
       doc.text(`NIM        : ${student.nim}`, 20, 50);
       doc.text(`Nama       : ${student.nama}`, 20, 60);
       doc.text(`Tempat Lahir : ${student.tempatLahir}`, 20, 70);
+      doc.text(`Tanggal Lahir : ${student.tanggalLahir}`, 20, 75);
+      doc.text(`Jenis Kelamin : ${student.jenisKelamin}`, 20, 80);
+      doc.text(`Angkatan  : ${student.angkatan}`, 20, 85);
       doc.text(`Prodi      : ${student.prodi}`, 20, 80);
       doc.text(`Email      : ${student.email}`, 20, 90);
       doc.text(`No. HP     : ${student.noHp}`, 20, 100);
-
       doc.save(`Detail-${student.nim}.pdf`);
     };
 
@@ -141,6 +167,7 @@
         <StudentForm
           bind:student
           {prodiOptions}
+          {jenisKelaminOptions}
           {errorMessage}
           {successMessage}
           onSubmit={handleEdit}
