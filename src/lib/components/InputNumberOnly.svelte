@@ -3,6 +3,7 @@
 	export let fieldName = 'Nomor Telepon';
 	export let fieldLabel = '';
 	export let isRequired = false;
+  export let placeholder = '';
 
 	function handleInput(e) {
 		// Hanya izinkan angka (0-9)
@@ -20,7 +21,7 @@
 		class="w-full rounded border p-2 shadow-sm focus:ring-2 focus:ring-blue-300 focus:outline-none"
         minlength="2"
         maxlength="13"
-		placeholder={fieldName}
+		placeholder={placeholder || fieldName}
 		required={isRequired}
 	/>
 </div>

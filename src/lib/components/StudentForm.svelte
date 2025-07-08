@@ -114,6 +114,8 @@
           fieldName="Angkatan"
           fieldLabel="angkatan"
           isRequired={true}
+          placeholder="Contoh: 2022"
+  
         />  
 			</div>
 		</div>
