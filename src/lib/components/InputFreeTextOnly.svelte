@@ -3,28 +3,21 @@
 	export let fieldName = 'NIM';
 	export let fieldLabel = '';
 	export let isRequired = false;
-	export let inputType = 'text'; // 'text', 'email', 'alphanumeric', 'letters'
+	export let inputType = 'text'; 
 
 	function handleInput(e) {
 		let filteredValue = e.target.value;
 
-		// Terapkan filter berdasarkan tipe input
+        // Filter input value based on inputType
 		switch (inputType) {
-			case 'letters':
-				// Hanya huruf dan spasi
-				filteredValue = e.target.value.replace(/[^a-zA-Z\s]/g, '');
-				break;
-			case 'alphanumeric':
-				// Huruf, angka, dan spasi
+			case 'nim':
 				filteredValue = e.target.value.replace(/[^a-zA-Z\s0-9]/g, '');
 				break;
 			case 'email':
-				// Email: huruf, angka, @, ., -, _
 				filteredValue = e.target.value.replace(/[^a-zA-Z0-9@.\-_]/g, '');
 				break;
 			case 'text':
 			default:
-				// Tidak ada filter, semua karakter diizinkan
 				filteredValue = e.target.value;
 				break;
 		}

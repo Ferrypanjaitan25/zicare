@@ -39,7 +39,7 @@
             fieldName="NIM"
             fieldLabel="nim"
             isRequired={true}
-            inputType="alphanumeric"
+            inputType="nim"
           />
         </div>
 
