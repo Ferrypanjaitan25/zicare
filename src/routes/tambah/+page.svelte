@@ -9,6 +9,9 @@
     nim: '',
     nama: '',
     tempatLahir: '',
+    tanggalLahir: '',
+    jenisKelamin: '',
+    angkatan: '',
     email: '',
     noHp: '',
     prodi: ''
@@ -26,6 +29,8 @@
     'Manajemen Rekayasa'
   ];
 
+  let jenisKelaminOptions = ['Laki-laki', 'Perempuan'];
+
   let errorMessage = '';
   let successMessage = '';
 
@@ -38,6 +43,9 @@
       !student.nim ||
       !student.nama ||
       !student.tempatLahir ||
+      !student.tanggalLahir ||
+      !student.jenisKelamin ||
+      !student.angkatan ||
       !student.email ||
       !student.noHp ||
       !student.prodi
@@ -85,7 +93,9 @@
     }
 
     studentsStore.update(data => [
+      // @ts-ignore
       ...data,
+      // @ts-ignore
       {
         id: Date.now(),
         ...student
@@ -105,6 +115,7 @@
       <StudentForm
         bind:student
         {prodiOptions}
+        {jenisKelaminOptions}
         {errorMessage}
         {successMessage}
         onSubmit={handleSubmit}

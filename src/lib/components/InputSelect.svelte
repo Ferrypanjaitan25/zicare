@@ -1,6 +1,6 @@
 <script>
   export let value = '';
-  export let options = []; // daftar prodi atau pilihan
+  export let options = [];
   export let fieldLabel = '';
   export let fieldName = 'Pilih Opsi';
   export let isRequired = false;

@@ -13,6 +13,7 @@
   let successMessage = '';
 
   let prodiOptions = ['', 'Sistem Informasi', 'Teknologi Informasi', 'Sarjana Terapan Rekayasa Perangkat Lunak', 'Teknik Komputer', 'Teknik Elektro', 'Informatika', 'Teknik Bioproses', 'Metalurgi', 'Manajemen Rekayasa'];
+  let jenisKelaminOptions = ['Laki-laki', 'Perempuan'];
 
   onMount(() => {
     studentsStore.subscribe(data => {
@@ -25,6 +26,7 @@
     filteredStudents = students.filter(student => {
       const matchNim = searchNim === '' || student.nim.includes(searchNim);
       const matchProdi = selectedProdi === '' || student.prodi === selectedProdi;
+      const matchAngkatan = selectedProdi === '' || student.angkatan === selectedProdi;
       return matchNim && matchProdi;
     });
   }
@@ -88,6 +90,9 @@
               <th class="px-4 py-3">NIM</th>
               <th class="px-4 py-3">Nama</th>
               <th class="px-4 py-3">Tempat Lahir</th>
+              <th class="px-4 py-3">Tanggal Lahir</th>
+              <th class="px-4 py-3">Jenis Kelamin</th>
+              <th class="px-4 py-3">Angkatan</th>
               <th class="px-4 py-3">Prodi</th>
               <th class="px-4 py-3">Email</th>
               <th class="px-4 py-3">No. HP</th>
@@ -100,6 +105,9 @@
                 <td class="px-4 py-2">{student.nim}</td>
                 <td class="px-4 py-2">{student.nama}</td>
                 <td class="px-4 py-2">{student.tempatLahir}</td>
+                <td class="px-4 py-2">{student.tanggalLahir}</td>
+                <td class="px-4 py-2">{student.jenisKelamin}</td>
+                <td class="px-4 py-2">{student.angkatan}</td>
                 <td class="px-4 py-2">{student.prodi}</td>
                 <td class="px-4 py-2">{student.email}</td>
                 <td class="px-4 py-2">{student.noHp}</td>
