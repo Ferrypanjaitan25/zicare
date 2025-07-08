@@ -92,15 +92,17 @@
       return;
     }
 
-    studentsStore.update(data => [
+    studentsStore.update(data => {
       // @ts-ignore
-      ...data,
-      // @ts-ignore
-      {
-        id: Date.now(),
-        ...student
-      }
-    ]);
+      const newData = [
+        ...data,
+        {
+          id: Date.now(),
+          ...student
+        }
+      ];
+      return newData.sort((a, b) => a.prodi.localeCompare(b.prodi));
+    });
 
     successMessage = 'Data mahasiswa berhasil ditambahkan!';
     setTimeout(() => goto('/'), 1000);

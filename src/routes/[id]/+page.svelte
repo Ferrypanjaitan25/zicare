@@ -23,6 +23,7 @@
     'Metalurgi',
     'Manajemen Rekayasa'
   ];
+  prodiOptions = prodiOptions.sort((a, b) => a.localeCompare(b));
 
   let jenisKelaminOptions = [
     'Laki-laki', 

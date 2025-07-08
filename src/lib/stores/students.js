@@ -4,9 +4,9 @@ export const studentsStore = writable([
   {
     id: 1,
     nim: '12S22027',
-    nama: 'Ferry Ando H.O Panjaitan',
+    nama: 'Ferry Ando H O Panjaitan',
     tempatLahir: 'Medan',
-    tanggalLahir: '2004-01-01',
+    tanggalLahir: '25/10/2003',
     jenisKelamin: 'Laki-laki',
     angkatan: '2022',
     prodi: 'Sistem Informasi',

@@ -4,7 +4,6 @@
 	import InputTextOnly from './InputTextOnly.svelte';
 	import InputSelect from './InputSelect.svelte'; 
   import InputFreeTextOnly from './InputFreeTextOnly.svelte';
-  import DateInput from './DateInput.svelte';
   import FlatpickrInput from './FlatpickrInput.svelte';
 
 	export let student = {
@@ -19,6 +18,7 @@
 		noHp: ''
 	};
   export let prodiOptions = [];
+  prodiOptions = prodiOptions.sort((a, b) => a.localeCompare(b));
   export let jenisKelaminOptions = [];
   export let onSubmit = () => {};
   export let errorMessage = '';
@@ -38,24 +38,20 @@
 		<Notification message={successMessage} type="success" />
 	{/if}
 
-<<<<<<< Updated upstream
-	<form on:submit|preventDefault={onSubmit} class="space-y-4">
-    <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-      <!-- Kolom Kiri: NIM, Nama, Jenis Kelamin, Tempat Lahir, Tanggal Lahir -->
-      <div class="space-y-4">
-        <div>
-       
-      <InputFreeTextOnly
-            bind:value={student.nim}
-            fieldName="NIM"
-            fieldLabel="nim"
-            isRequired={true}
-            inputType="nim"
-=======
-  4
->>>>>>> Stashed changes
-          />
-        </div>
+<form on:submit|preventDefault={onSubmit} class="space-y-4">
+  <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+    <!-- Kolom Kiri: NIM, Nama, Jenis Kelamin, Tempat Lahir, Tanggal Lahir -->
+    <div class="space-y-4">
+      <div>
+     
+    <InputFreeTextOnly
+          bind:value={student.nim}
+          fieldName="NIM"
+          fieldLabel="nim"
+          isRequired={true}
+          inputType="nim"
+        />
+      </div>
 
 				<InputTextOnly bind:value={student.nama} fieldLabel="nama-lengkap" isRequired={true} />
 
