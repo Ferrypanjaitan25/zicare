@@ -1,6 +1,6 @@
 <script>
 	import Notification from './Notification.svelte';
-	import NoHpInput from './NoHpInput.svelte';
+	import Inputnumberonly from './InputNumberOnly.svelte';
 	import InputTextOnly from './InputTextOnly.svelte';
 
 	export let student = {
@@ -27,21 +27,21 @@
 	{/if}
 
 	<form on:submit|preventDefault={onSubmit} class="space-y-4">
-		<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-			<!-- Kolom Kiri: NIM, Nama, Prodi -->
-			<div class="space-y-4">
-				<div>
-					<label for="nim" class="block text-sm font-medium text-gray-700">NIM</label>
-					<input
-						id="nim"
-						bind:value={student.nim}
-						class="w-full rounded border p-2 shadow-sm focus:ring-2 focus:ring-blue-300 focus:outline-none"
-						placeholder="NIM"
-						minlength="8"
-						maxlength="10"
-						required
-					/>
-				</div>
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+      <!-- Kolom Kiri: NIM, Nama, Tempat Lahir -->
+      <div class="space-y-4">
+        <div>
+          <label for="nim" class="block text-sm font-medium text-gray-700">NIM</label>
+          <input
+            id="nim"
+            bind:value={student.nim}
+            class="w-full rounded border p-2 shadow-sm focus:ring-2 focus:ring-blue-300 focus:outline-none"
+            placeholder="NIM"
+            minlength="8"
+            maxlength="10"
+            required
+          />
+        </div>
 
 				<InputTextOnly bind:value={student.nama} fieldLabel="nama-lengkap" isRequired={true} />
 
@@ -52,35 +52,42 @@
 				/>
 
 				<div>
-					<label for="prodi" class="block text-sm font-medium text-gray-700">Program Studi</label>
-					<select
-						id="prodi"
-						bind:value={student.prodi}
-						class="w-full rounded border p-2 shadow-sm focus:ring-2 focus:ring-blue-300 focus:outline-none"
-						required
-					>
-						<option value="">Pilih Program Studi</option>
-						{#each prodiOptions as option}
-							<option value={option}>{option}</option>
-						{/each}
-					</select>
+		
 				</div>
 			</div>
 
-			<!-- Kolom Kanan: Email, No. HP -->
-			<div class="space-y-4">
-				<div>
-					<label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-					<input
-						id="email"
-						bind:value={student.email}
-						class="w-full rounded border p-2 shadow-sm focus:ring-2 focus:ring-blue-300 focus:outline-none"
-						placeholder="Email"
-						required
-					/>
-				</div>
+		 <!-- Kolom Kanan: Prodi, Email, No. HP -->
+      <div class="space-y-4">
+        <div>
+          <label for="prodi" class="block text-sm font-medium text-gray-700">Program Studi</label>
+          <select
+            id="prodi"
+            bind:value={student.prodi}
+            class="w-full rounded border p-2 shadow-sm focus:ring-2 focus:ring-blue-300 focus:outline-none"
+            required
+          >
+            <option value="">Pilih Program Studi</option>
+            {#each prodiOptions as option}
+              <option value={option}>{option}</option>
+            {/each}
+          </select>
+        </div>
 
-				<NoHpInput bind:value={student.noHp} />
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+          <input
+            id="email"
+            bind:value={student.email}
+            class="w-full rounded border p-2 shadow-sm focus:ring-2 focus:ring-blue-300 focus:outline-none"
+            placeholder="Email"
+            required
+          />
+        </div>
+				<Inputnumberonly bind:value={student.noHp}
+          fieldName="No. HP"
+          fieldLabel="no-hp"
+          isRequired={true} 
+        />
 			</div>
 		</div>
 

@@ -13,9 +13,15 @@
   let successMessage = '';
 
   let prodiOptions = [
-    'Sistem Informasi', 'Teknologi Informasi', 'Sarjana Terapan Rekayasa Perangkat Lunak',
-    'Teknik Komputer', 'Teknik Elektro', 'Informatika', 'Teknik Bioproses',
-    'Metalurgi', 'Manajemen Rekayasa'
+    'Sistem Informasi',
+    'Teknologi Informasi',
+    'Sarjana Terapan Rekayasa Perangkat Lunak',
+    'Teknik Komputer',
+    'Teknik Elektro',
+    'Informatika',
+    'Teknik Bioproses',
+    'Metalurgi',
+    'Manajemen Rekayasa'
   ];
 
   onMount(() => {
@@ -34,7 +40,14 @@
       return;
     }
 
-    if (!student.nim || !student.nama || !student.email || !student.noHp || !student.prodi) {
+    if (
+      !student.nim ||
+      !student.nama ||
+      !student.tempatLahir ||
+      !student.email ||
+      !student.noHp ||
+      !student.prodi
+    ) {
       errorMessage = 'Mohon lengkapi semua field!';
       return;
     }
@@ -43,6 +56,12 @@
     const namaPattern = /^[a-zA-Z\s]+$/;
     if (!namaPattern.test(student.nama)) {
       errorMessage = 'Nama hanya boleh berisi huruf dan spasi!';
+      return;
+    }
+
+    // Validasi tempat lahir hanya huruf dan spasi
+    if (!namaPattern.test(student.tempatLahir)) {
+      errorMessage = 'Tempat Lahir hanya boleh berisi huruf dan spasi!';
       return;
     }
 
@@ -70,13 +89,12 @@
         id: student.id,
         nim: student.nim,
         nama: student.nama,
+        tempatLahir: student.tempatLahir,
         email: student.email,
         noHp: student.noHp,
         prodi: student.prodi
       };
-      studentsStore.update(data =>
-        data.map(s => s.id === updatedStudent.id ? updatedStudent : s)
-      );
+      studentsStore.update(data => data.map(s => s.id === updatedStudent.id ? updatedStudent : s));
       successMessage = 'Data berhasil diperbarui!';
       setTimeout(() => goto('/'), 1000);
     }
@@ -100,9 +118,10 @@
       doc.setFontSize(12);
       doc.text(`NIM        : ${student.nim}`, 20, 50);
       doc.text(`Nama       : ${student.nama}`, 20, 60);
-      doc.text(`Prodi      : ${student.prodi}`, 20, 70);
-      doc.text(`Email      : ${student.email}`, 20, 80);
-      doc.text(`No. HP     : ${student.noHp}`, 20, 90);
+      doc.text(`Tempat Lahir : ${student.tempatLahir}`, 20, 70);
+      doc.text(`Prodi      : ${student.prodi}`, 20, 80);
+      doc.text(`Email      : ${student.email}`, 20, 90);
+      doc.text(`No. HP     : ${student.noHp}`, 20, 100);
 
       doc.save(`Detail-${student.nim}.pdf`);
     };
