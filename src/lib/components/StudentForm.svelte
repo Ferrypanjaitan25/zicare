@@ -3,6 +3,7 @@
 	import Inputnumberonly from './InputNumberOnly.svelte';
 	import InputTextOnly from './InputTextOnly.svelte';
 	import InputSelect from './InputSelect.svelte'; 
+  import InputFreeTextOnly from './InputFreeTextOnly.svelte';
 
 	export let student = {
 		nim: '',
@@ -32,15 +33,13 @@
       <!-- Kolom Kiri: NIM, Nama, Tempat Lahir -->
       <div class="space-y-4">
         <div>
-          <label for="nim" class="block text-sm font-medium text-gray-700">NIM</label>
-          <input
-            id="nim"
+       
+      <InputFreeTextOnly
             bind:value={student.nim}
-            class="w-full rounded border p-2 shadow-sm focus:ring-2 focus:ring-blue-300 focus:outline-none"
-            placeholder="NIM"
-            minlength="8"
-            maxlength="10"
-            required
+            fieldName="NIM"
+            fieldLabel="nim"
+            isRequired={true}
+            inputType="alphanumeric"
           />
         </div>
 
@@ -69,13 +68,12 @@
         />
 
         <div>
-          <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-          <input
-            id="email"
+          <InputFreeTextOnly
             bind:value={student.email}
-            class="w-full rounded border p-2 shadow-sm focus:ring-2 focus:ring-blue-300 focus:outline-none"
-            placeholder="Email"
-            required
+            fieldName="Email"
+            fieldLabel="email"
+            isRequired={true}
+            inputType="email"
           />
         </div>
 				
