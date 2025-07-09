@@ -22,7 +22,13 @@
     'Teknik Bioproses',
     'Metalurgi',
     'Manajemen Rekayasa'
+<<<<<<< Updated upstream
   ];
+=======
+  ].sort((a, b) => a.localeCompare(b));
+
+  let jenisKelaminOptions = ['Laki-laki', 'Perempuan'];
+>>>>>>> Stashed changes
 
   onMount(() => {
     const id = +$page.params.id;
@@ -31,13 +37,20 @@
     });
   });
 
+<<<<<<< Updated upstream
   // Fungsi validasi modular
+=======
+>>>>>>> Stashed changes
   function validateStudent(student) {
     if (!student) return 'Data mahasiswa tidak ditemukan!';
 
     const validations = [
       {
+<<<<<<< Updated upstream
         condition: !student.nim || !student.nama || !student.tempatLahir || !student.tanggalLahir || !student.email || !student.noHp || !student.prodi || !student.angkatan,
+=======
+        condition: !student.nim || !student.nama || !student.tempatLahir || !student.tanggalLahir || !student.jenisKelamin || !student.angkatan || !student.email || !student.noHp || !student.prodi,
+>>>>>>> Stashed changes
         message: 'Mohon lengkapi semua field!'
       },
       {
@@ -53,16 +66,30 @@
         message: 'Tanggal Lahir harus dalam format DD-MM-YYYY!'
       },
       {
+<<<<<<< Updated upstream
         condition: !/^\d{11,13}$/.test(student.noHp),
         message: 'Nomor HP harus terdiri dari 11 hingga 13 angka!'
+=======
+        condition: !['Laki-laki', 'Perempuan'].includes(student.jenisKelamin),
+        message: 'Jenis Kelamin harus Laki-laki atau Perempuan!'
+>>>>>>> Stashed changes
       },
       {
         condition: !/^\d{2,4}$/.test(student.angkatan),
         message: 'Angkatan harus terdiri dari 2 hingga 4 angka!'
       },
       {
+<<<<<<< Updated upstream
         condition: !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(student.email),
         message: 'Format email tidak valid! Contoh: nim@students.del.ac.id'
+=======
+        condition: !/^\d{11,13}$/.test(student.noHp),
+        message: 'Nomor HP harus terdiri dari 11 hingga 13 angka!'
+      },
+      {
+        condition: !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(student.email),
+        message: 'Format email tidak valid! Contoh:iss22013@students.del.ac.id'
+>>>>>>> Stashed changes
       },
       {
         condition: student.nim.trim().length < 8 || student.nim.trim().length > 10,
@@ -96,8 +123,12 @@
         tanggalLahir: student.tanggalLahir,
         email: student.email,
         noHp: student.noHp,
+<<<<<<< Updated upstream
         prodi: student.prodi,
         angkatan: student.angkatan
+=======
+        prodi: student.prodi
+>>>>>>> Stashed changes
       };
       studentsStore.update(data => data.map(s => s.id === updatedStudent.id ? updatedStudent : s));
       successMessage = 'Data berhasil diperbarui!';
@@ -122,11 +153,20 @@
       doc.text(`NIM           : ${student.nim}`, 20, 50);
       doc.text(`Nama          : ${student.nama}`, 20, 60);
       doc.text(`Tempat Lahir  : ${student.tempatLahir}`, 20, 70);
+<<<<<<< Updated upstream
       doc.text(`Tanggal Lahir : ${student.tanggalLahir || 'Tidak diketahui'}`, 20, 80);
       doc.text(`Prodi         : ${student.prodi}`, 20, 90);
       doc.text(`Email         : ${student.email}`, 20, 100);
       doc.text(`No. HP        : ${student.noHp}`, 20, 110);
       doc.text(`Angkatan      : ${student.angkatan}`, 20, 120);
+=======
+      doc.text(`Tanggal Lahir : ${student.tanggalLahir}`, 20, 80);
+      doc.text(`Jenis Kelamin : ${student.jenisKelamin}`, 20, 90);
+      doc.text(`Angkatan      : ${student.angkatan}`, 20, 100);
+      doc.text(`Prodi         : ${student.prodi}`, 20, 110);
+      doc.text(`Email         : ${student.email}`, 20, 120);
+      doc.text(`No. HP        : ${student.noHp}`, 20, 130);
+>>>>>>> Stashed changes
 
       doc.save(`Detail-${student.nim}.pdf`);
     };
@@ -153,7 +193,11 @@
         <button
           type="button"
           on:click={downloadPDF}
+<<<<<<< Updated upstream
           class="mt-4 w-full rounded bg-red-600 px-4 py-2 text-white transition hover:bg-red-700"
+=======
+          class="mt-4 w-full rounded bg-red-600 px-4 py-2 text-white font-semibold transition hover:bg-red-700"
+>>>>>>> Stashed changes
         >
           ⬇️ Download Data
         </button>

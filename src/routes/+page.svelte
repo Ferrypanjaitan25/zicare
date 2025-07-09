@@ -9,9 +9,14 @@
   let filteredStudents = [];
   let searchNim = '';
   let selectedProdi = '';
+  let selectedJenisKelamin = '';
   let successMessage = '';
 
+<<<<<<< Updated upstream
   const prodiOptions = [
+=======
+  let prodiOptions = [
+>>>>>>> Stashed changes
     '',
     'Sistem Informasi',
     'Teknologi Informasi',
@@ -22,7 +27,13 @@
     'Teknik Bioproses',
     'Metalurgi',
     'Manajemen Rekayasa'
+<<<<<<< Updated upstream
   ];
+=======
+  ].sort((a, b) => a.localeCompare(b));
+
+  let jenisKelaminOptions = ['', 'Laki-laki', 'Perempuan'];
+>>>>>>> Stashed changes
 
   onMount(() => {
     studentsStore.subscribe(data => {
@@ -35,7 +46,12 @@
     filteredStudents = students.filter(student => {
       const matchNim = searchNim === '' || student.nim.includes(searchNim);
       const matchProdi = selectedProdi === '' || student.prodi === selectedProdi;
+<<<<<<< Updated upstream
       return matchNim && matchProdi;
+=======
+      const matchJenisKelamin = selectedJenisKelamin === '' || student.jenisKelamin === selectedJenisKelamin;
+      return matchNim && matchProdi && matchJenisKelamin;
+>>>>>>> Stashed changes
     });
   }
 
@@ -44,7 +60,11 @@
     if (confirmDelete) {
       studentsStore.update(data => data.filter(mhs => mhs.id !== id));
       successMessage = 'Data mahasiswa berhasil dihapus!';
+<<<<<<< Updated upstream
       setTimeout(() => (successMessage = ''), 2500);
+=======
+      setTimeout(() => (successMessage = ''), 2000);
+>>>>>>> Stashed changes
     }
   }
 </script>
@@ -59,7 +79,11 @@
     {/if}
 
     <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+<<<<<<< Updated upstream
       <div class="flex w-full gap-4 md:w-2/3">
+=======
+      <div class="flex flex-col gap-4 w-full md:flex-row md:w-2/3">
+>>>>>>> Stashed changes
         <input
           type="text"
           placeholder="🔍 Cari NIM..."
@@ -75,6 +99,17 @@
         >
           <option value="">🎓 Semua Prodi</option>
           {#each prodiOptions.slice(1) as option}
+            <option value={option}>{option}</option>
+          {/each}
+        </select>
+
+        <select
+          bind:value={selectedJenisKelamin}
+          on:change={applyFilter}
+          class="w-full rounded-lg border border-gray-300 px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-300"
+        >
+          <option value="">👤 Semua Jenis Kelamin</option>
+          {#each jenisKelaminOptions.slice(1) as option}
             <option value={option}>{option}</option>
           {/each}
         </select>
@@ -99,10 +134,18 @@
               <th class="px-4 py-3 text-left">Nama</th>
               <th class="px-4 py-3 text-left">Tempat Lahir</th>
               <th class="px-4 py-3 text-left">Tanggal Lahir</th>
+<<<<<<< Updated upstream
               <th class="px-4 py-3 text-left">Prodi</th>
               <th class="px-4 py-3 text-left">Email</th>
               <th class="px-4 py-3 text-left">No. HP</th>
               <th class="px-4 py-3 text-left">Angkatan</th>
+=======
+              <th class="px-4 py-3 text-left">Jenis Kelamin</th>
+              <th class="px-4 py-3 text-left">Angkatan</th>
+              <th class="px-4 py-3 text-left">Prodi</th>
+              <th class="px-4 py-3 text-left">Email</th>
+              <th class="px-4 py-3 text-left">No. HP</th>
+>>>>>>> Stashed changes
               <th class="px-4 py-3 text-center">Aksi</th>
             </tr>
           </thead>
@@ -113,6 +156,11 @@
                 <td class="px-4 py-2">{student.nama}</td>
                 <td class="px-4 py-2">{student.tempatLahir}</td>
                 <td class="px-4 py-2">{student.tanggalLahir || 'Tidak diketahui'}</td>
+<<<<<<< Updated upstream
+=======
+                <td class="px-4 py-2">{student.jenisKelamin}</td>
+                <td class="px-4 py-2">{student.angkatan}</td>
+>>>>>>> Stashed changes
                 <td class="px-4 py-2">{student.prodi}</td>
                 <td class="px-4 py-2">{student.email}</td>
                 <td class="px-4 py-2">{student.noHp}</td>
