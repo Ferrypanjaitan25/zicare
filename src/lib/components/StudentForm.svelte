@@ -1,34 +1,37 @@
 <script>
-	import Notification from './Notification.svelte';
-	import Inputnumberonly from './InputNumberOnly.svelte';
-	import InputTextOnly from './InputTextOnly.svelte';
+  import Notification from './Notification.svelte';
+  import InputTextOnly from './InputTextOnly.svelte';
+  import InputNumberOnly from './InputNumberOnly.svelte';
+  import InputDateOnly from './InputDateOnly.svelte';
 
-	export let student = {
-		nim: '',
-		nama: '',
-		tempatLahir: '',
-		prodi: '',
-		email: '',
-		noHp: ''
-	};
-	export let prodiOptions = [];
-	export let onSubmit = () => {};
-	export let errorMessage = '';
-	export let successMessage = '';
+  export let student = {
+    nim: '',
+    nama: '',
+    tempatLahir: '',
+    tanggalLahir: '',
+    prodi: '',
+    email: '',
+    noHp: '',
+    angkatan: ''
+  };
+  export let prodiOptions = [];
+  export let onSubmit = () => {};
+  export let errorMessage = '';
+  export let successMessage = '';
 </script>
 
 <div class="mx-auto max-w-2xl rounded-lg border border-gray-200 bg-white p-6 shadow-md">
-	{#if errorMessage}
-		<Notification message={errorMessage} type="error" />
-	{/if}
+  {#if errorMessage}
+    <Notification message={errorMessage} type="error" />
+  {/if}
 
-	{#if successMessage}
-		<Notification message={successMessage} type="success" />
-	{/if}
+  {#if successMessage}
+    <Notification message={successMessage} type="success" />
+  {/if}
 
-	<form on:submit|preventDefault={onSubmit} class="space-y-4">
+  <form on:submit|preventDefault={onSubmit} class="space-y-4">
     <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-      <!-- Kolom Kiri: NIM, Nama, Tempat Lahir -->
+      <!-- Kolom Kiri: NIM, Nama, Tempat Lahir, Tanggal Lahir -->
       <div class="space-y-4">
         <div>
           <label for="nim" class="block text-sm font-medium text-gray-700">NIM</label>
@@ -50,13 +53,18 @@
 					fieldName="Tempat Lahir"
 					fieldLabel="tempat-lahir"
 				/>
+      
+        <InputDateOnly
+          bind:value={student.tanggalLahir}
+          fieldName="Tanggal Lahir"
+          fieldLabel="tanggal-lahir"
+          isRequired={true}
+          minlength="10"
+          maxlength="10"
+        />
+      </div>
 
-				<div>
-		
-				</div>
-			</div>
-
-		 <!-- Kolom Kanan: Prodi, Email, No. HP -->
+      <!-- Kolom Kanan: Prodi, Email, No. HP, Angkatan -->
       <div class="space-y-4">
         <div>
           <label for="prodi" class="block text-sm font-medium text-gray-700">Program Studi</label>
@@ -78,24 +86,38 @@
           <input
             id="email"
             bind:value={student.email}
+            type="email"
             class="w-full rounded border p-2 shadow-sm focus:ring-2 focus:ring-blue-300 focus:outline-none"
             placeholder="Email"
             required
           />
         </div>
-				<Inputnumberonly bind:value={student.noHp}
+
+        <InputNumberOnly
+          bind:value={student.noHp}
           fieldName="No. HP"
           fieldLabel="no-hp"
-          isRequired={true} 
+          isRequired={true}
+          minlength="11"
+          maxlength="13"
         />
-			</div>
-		</div>
 
-		<button
-			type="submit"
-			class="w-full rounded bg-blue-500 px-4 py-2 text-white transition hover:bg-blue-600"
-		>
-			Simpan
-		</button>
-	</form>
+        <InputNumberOnly
+          bind:value={student.angkatan}
+          fieldName="Angkatan"
+          fieldLabel="angkatan"
+          isRequired={true}
+          minlength="2"
+          maxlength="4"
+        />
+      </div>
+    </div>
+
+    <button
+      type="submit"
+      class="w-full rounded bg-blue-500 px-4 py-2 text-white transition hover:bg-blue-600"
+    >
+      Simpan
+    </button>
+  </form>
 </div>

@@ -3,19 +3,19 @@ import { writable } from 'svelte/store';
 export const studentsStore = writable([
   {
     id: 1,
-    nim: '12S22027',
-    nama: 'Ferry Ando H.O Panjaitan',
+    nim: '12S22013',
+    nama: 'Christoffel Theofani Napitupulu',
     prodi: 'Sistem Informasi',
-    email: 'iss22027@students.del.ac.id',
-    noHp: '081260900151'
+    email: 'iss22013@students.del.ac.id',
+    noHp: '082168249280'
   },
 
   {
     id: 2,
-    nim: '11S22013',
-    nama: 'Christoffel Theofani Napitupulu',
+    nim: '11S22011',
+    nama: 'Christian Theofani Napitupulu',
     prodi: 'Informatika',
-    email: 'ifs22013@students.del.ac.id',
+    email: 'ifs22011@students.del.ac.id',
     noHp: '082112345678'
   },
   {

@@ -1,8 +1,10 @@
 <script>
   export let value = '';
-  export let fieldName = 'No. HP';
-  export let fieldLabel = 'no-hp';
+  export let fieldName = 'Number Input';
+  export let fieldLabel = 'number-input';
   export let isRequired = true;
+  export let minlength = undefined;
+  export let maxlength = undefined;
 
   function handleInput(e) {
     // Hanya izinkan angka
@@ -21,9 +23,9 @@
     class="w-full rounded border p-2 shadow-sm focus:ring-2 focus:ring-blue-300 focus:outline-none"
     placeholder={fieldName}
     required={isRequired}
-    minlength="11"
-    maxlength="13"
     inputmode="numeric"
     pattern="\d*"
+    {minlength}
+    {maxlength}
   />
 </div>
