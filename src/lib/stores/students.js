@@ -13,4 +13,7 @@ export const studentsStore = writable([
     email: 'iss22027@students.del.ac.id',
     noHp: '081260900151'
   },
+  
 ]);
+
+;

@@ -33,6 +33,7 @@
 
   let errorMessage = '';
   let successMessage = '';
+  let isAgeValid = true;
 
   function handleSubmit() {
     const nimLength = student.nim.trim().length;
@@ -54,14 +55,17 @@
       return;
     }
 
-    // Validasi nama hanya huruf dan spasi
+    if (!isAgeValid) {
+      errorMessage = 'Usia minimal 19 tahun. Tidak memenuhi syarat.';
+      return;
+    }
+
     const namaPattern = /^[a-zA-Z\s]+$/;
     if (!namaPattern.test(student.nama)) {
       errorMessage = 'Nama hanya boleh berisi huruf dan spasi!';
       return;
     }
 
-    // Validasi tempat lahir hanya huruf dan spasi
     if (!namaPattern.test(student.tempatLahir)) {
       errorMessage = 'Tempat Lahir hanya boleh berisi huruf dan spasi!';
       return;
@@ -81,7 +85,6 @@
 
     const existingStudents = get(studentsStore);
     const isDuplicateNim = existingStudents.some(s => s.nim === student.nim);
-
     if (isDuplicateNim) {
       errorMessage = 'NIM sudah terdaftar. Gunakan NIM lain.';
       return;
@@ -93,7 +96,6 @@
     }
 
     studentsStore.update(data => {
-      // @ts-ignore
       const newData = [
         ...data,
         {
@@ -121,6 +123,7 @@
         {errorMessage}
         {successMessage}
         onSubmit={handleSubmit}
+        on:ageValidation={(e) => isAgeValid = e.detail.valid}
       />
     </div>
   </div>
