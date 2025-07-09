@@ -28,7 +28,7 @@
   function validateAndDispatch() {
     const valid = isValidAge(value);
     if (value && !valid) {
-      errorMsg = 'Usia minimal 19 tahun. Tidak memenuhi syarat.';
+      errorMsg = 'Usia minimal 19 tahun.  Tidak memenuhi syarat.';
     } else {
       errorMsg = '';
     }
