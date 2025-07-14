@@ -33,6 +33,12 @@
     });
   });
 
+  function isValidDate(dateStr) {
+    const [day, month, year] = dateStr.split('-').map(Number);
+    const date = new Date(year, month - 1, day);
+    return date.getDate() === day && date.getMonth() + 1 === month && date.getFullYear() === year && year >= 1900 && year <= 2025;
+  }
+
   function validateStudent(student) {
     if (!student) return 'Data mahasiswa tidak ditemukan!';
 
@@ -54,6 +60,10 @@
         message: 'Tanggal Lahir harus dalam format DD-MM-YYYY!'
       },
       {
+        condition: !isValidDate(student.tanggalLahir),
+        message: 'Tanggal Lahir tidak valid atau di luar rentang 1900-2025!'
+      },
+      {
         condition: !['Laki-laki', 'Perempuan'].includes(student.jenisKelamin),
         message: 'Jenis Kelamin harus Laki-laki atau Perempuan!'
       },
@@ -67,7 +77,7 @@
       },
       {
         condition: !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(student.email),
-        message: 'Format email tidak valid! Contoh:iss22013@students.del.ac.id'
+        message: 'Format email tidak valid! Contoh: iss22013@students.del.ac.id'
       },
       {
         condition: student.nim.trim().length < 8 || student.nim.trim().length > 10,
@@ -161,7 +171,8 @@
         <button
           type="button"
           on:click={downloadPDF}
-          class="mt-4 w-full rounded bg-red-600 px-4 py-2 text-white font-semibold transition hover:bg-red-700"
+          class="mt-4 w-full rounded bg-blue-600 px-4 py-2 text-white font-semibold transition hover:bg-blue-700"
+          aria-label="Download data mahasiswa sebagai PDF"
         >
           ⬇️ Download Data
         </button>

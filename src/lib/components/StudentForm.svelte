@@ -1,41 +1,39 @@
 <script>
-	import Notification from './Notification.svelte';
-	import InputNumberOnly from './InputNumberOnly.svelte';
-	import InputTextOnly from './InputTextOnly.svelte';
-	import InputSelect from './InputSelect.svelte'; 
+  import Notification from './Notification.svelte';
+  import InputNumberOnly from './InputNumberOnly.svelte';
+  import InputTextOnly from './InputTextOnly.svelte';
+  import InputSelect from './InputSelect.svelte';
   import InputFreeTextOnly from './InputFreeTextOnly.svelte';
   import InputDateOnly from './InputDateOnly.svelte';
 
-	export let student = {
-		nim: '',
-		nama: '',
-		tempatLahir: '',
+  export let student = {
+    nim: '',
+    nama: '',
+    tempatLahir: '',
     tanggalLahir: '',
     jenisKelamin: '',
     angkatan: '',
-		prodi: '',
-		email: '',
-		noHp: ''
-	};
+    prodi: '',
+    email: '',
+    noHp: ''
+  };
   export let prodiOptions = [];
-  prodiOptions = prodiOptions.sort((a, b) => a.localeCompare(b));
   export let jenisKelaminOptions = [];
   export let onSubmit = () => {};
   export let errorMessage = '';
   export let successMessage = '';
-    
 
-
+  $: prodiOptions = prodiOptions.sort((a, b) => a.localeCompare(b));
 </script>
 
 <div class="mx-auto max-w-2xl rounded-lg border border-gray-200 bg-white p-6 shadow-md">
-	{#if errorMessage}
-		<Notification message={errorMessage} type="error" />
-	{/if}
+  {#if errorMessage}
+    <Notification message={errorMessage} type="error" />
+  {/if}
 
-	{#if successMessage}
-		<Notification message={successMessage} type="success" />
-	{/if}
+  {#if successMessage}
+    <Notification message={successMessage} type="success" />
+  {/if}
 
 <form on:submit|preventDefault={onSubmit} class="space-y-4">
   <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -63,12 +61,12 @@
          <InputSelect
           bind:value={student.jenisKelamin}
           fieldName="Jenis Kelamin"
-          fieldLabel="options"
+          fieldLabel="jenis-kelamin"
           options={jenisKelaminOptions}
           isRequired={true}
         />
 
-       <InputDateOnly
+        <InputDateOnly
           bind:value={student.tanggalLahir}
           fieldName="Tanggal Lahir"
           fieldLabel="tanggal-lahir"
@@ -76,17 +74,11 @@
           minlength="10"
           maxlength="10"
         />
+      </div>
 
-   
-				<div>
-		
-				</div>
-			</div>
-
-		 <!-- Kolom Kanan: Prodi, Email, No. Hp, Angkatan, -->
+      <!-- Kolom Kanan: Prodi, Email, No. HP, Angkatan -->
       <div class="space-y-4">
-        
-         <InputSelect
+        <InputSelect
           bind:value={student.prodi}
           fieldName="Program Studi"
           fieldLabel="prodi"
@@ -94,8 +86,7 @@
           isRequired={true}
         />
 
-        <div>
-         <InputFreeTextOnly
+        <InputFreeTextOnly
           bind:value={student.email}
           fieldName="Email"
           fieldLabel="email"
@@ -103,10 +94,8 @@
           inputType="email"
           placeholder="Contoh: iss22013@students.del.ac.id"
         />
-          
-        </div>
-				
-				 <InputNumberOnly
+
+        <InputNumberOnly
           bind:value={student.noHp}
           fieldName="No. HP"
           fieldLabel="no-hp"
@@ -115,7 +104,7 @@
           maxlength="13"
         />
 
-       <InputNumberOnly
+        <InputNumberOnly
           bind:value={student.angkatan}
           fieldName="Angkatan"
           fieldLabel="angkatan"
@@ -123,14 +112,14 @@
           minlength="2"
           maxlength="4"
         />
-			</div>
-		</div>
+      </div>
+    </div>
 
-		<button
-			type="submit"
-			class="w-full rounded bg-blue-500 px-4 py-2 text-white transition hover:bg-blue-600"
-		>
-			Simpan
-		</button>
-	</form>
+    <button
+      type="submit"
+      class="w-full rounded bg-blue-600 px-4 py-2 text-white font-semibold transition hover:bg-blue-700"
+    >
+      Simpan
+    </button>
+  </form>
 </div>

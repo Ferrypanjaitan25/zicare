@@ -70,12 +70,14 @@
           bind:value={searchNim}
           on:input={applyFilter}
           class="w-full rounded-lg border border-gray-300 px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-300"
+          aria-label="Cari berdasarkan NIM"
         />
 
         <select
           bind:value={selectedProdi}
           on:change={applyFilter}
           class="w-full rounded-lg border border-gray-300 px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-300"
+          aria-label="Filter berdasarkan Program Studi"
         >
           <option value="">🎓 Semua Prodi</option>
           {#each prodiOptions.slice(1) as option}
@@ -87,6 +89,7 @@
           bind:value={selectedJenisKelamin}
           on:change={applyFilter}
           class="w-full rounded-lg border border-gray-300 px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-300"
+          aria-label="Filter berdasarkan Jenis Kelamin"
         >
           <option value="">👤 Semua Jenis Kelamin</option>
           {#each jenisKelaminOptions.slice(1) as option}
@@ -98,6 +101,7 @@
       <button
         on:click={() => goto('/tambah')}
         class="mt-2 rounded-lg bg-blue-600 px-5 py-2 font-medium text-white transition hover:bg-blue-700 md:mt-0"
+        aria-label="Tambah mahasiswa baru"
       >
         ➕ Tambah Mahasiswa
       </button>
@@ -139,14 +143,16 @@
                     <button
                       on:click={() => goto(`/${student.id}`)}
                       class="rounded bg-green-500 px-2 py-1 text-sm text-white hover:bg-green-600 whitespace-nowrap"
+                      aria-label="Lihat detail mahasiswa"
                     >
-                      Detail
+                      📄 Detail
                     </button>
                     <button
                       on:click={() => handleDelete(student.id)}
                       class="rounded bg-red-500 px-2 py-1 text-sm text-white hover:bg-red-600 whitespace-nowrap"
+                      aria-label="Hapus mahasiswa"
                     >
-                      Hapus
+                      🗑️ Hapus
                     </button>
                   </div>
                 </td>

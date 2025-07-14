@@ -34,6 +34,12 @@
   let errorMessage = '';
   let successMessage = '';
 
+  function isValidDate(dateStr) {
+    const [day, month, year] = dateStr.split('-').map(Number);
+    const date = new Date(year, month - 1, day);
+    return date.getDate() === day && date.getMonth() + 1 === month && date.getFullYear() === year && year >= 1900;
+  }
+
   function validateStudent(student) {
     const validations = [
       {
@@ -51,6 +57,10 @@
       {
         condition: !/^\d{2}-\d{2}-\d{4}$/.test(student.tanggalLahir),
         message: 'Tanggal Lahir harus dalam format DD-MM-YYYY!'
+      },
+      {
+        condition: !isValidDate(student.tanggalLahir),
+        message: 'Tanggal Lahir tidak valid!'
       },
       {
         condition: !['Laki-laki', 'Perempuan'].includes(student.jenisKelamin),
