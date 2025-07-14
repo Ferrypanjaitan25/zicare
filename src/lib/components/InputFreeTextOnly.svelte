@@ -9,10 +9,13 @@
 	function handleInput(e) {
 		let filteredValue = e.target.value;
 
-        // Filter input value based on inputType
 		switch (inputType) {
 			case 'nim':
 				filteredValue = e.target.value.replace(/[^a-zA-Z\s0-9]/g, '');
+	
+				if (filteredValue.length > 12) {
+					filteredValue = filteredValue.slice(0, 12);
+				}
 				break;
 			case 'email':
 				filteredValue = e.target.value.replace(/[^a-zA-Z0-9@.\-_]/g, '');
