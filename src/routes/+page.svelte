@@ -52,8 +52,6 @@
   }
 </script>
 
-  <!-- Main Content -->
-  <div class="flex-1 ml-64 p-6 max-w-7xl mx-auto space-y-6">
     <h1 class="text-3xl font-bold text-gray-800">📋 Data Mahasiswa</h1>
 
     {#if successMessage}
