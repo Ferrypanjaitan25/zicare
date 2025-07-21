@@ -3,7 +3,6 @@
   import { goto } from '$app/navigation';
   import { onMount } from 'svelte';
   import Notification from '$lib/components/Notification.svelte';
-  import Sidebar from '$lib/components/Sidebar.svelte';
 
   let students = [];
   let filteredStudents = [];
@@ -53,9 +52,6 @@
   }
 </script>
 
-<div class="flex min-h-screen bg-gray-100">
-  <Sidebar />
-  <div class="flex-1 p-6 max-w-7xl mx-auto space-y-6">
     <h1 class="text-3xl font-bold text-gray-800">📋 Data Mahasiswa</h1>
 
     {#if successMessage}
@@ -163,4 +159,3 @@
       </div>
     {/if}
   </div>
-</div>

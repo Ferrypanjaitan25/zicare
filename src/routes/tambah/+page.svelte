@@ -3,7 +3,6 @@
   import { goto } from '$app/navigation';
   import { get } from 'svelte/store';
   import StudentForm from '$lib/components/StudentForm.svelte';
-  import Sidebar from '$lib/components/Sidebar.svelte';
 
   let student = {
     nim: '',
@@ -117,9 +116,6 @@
   }
 </script>
 
-<div class="flex min-h-screen bg-gray-100">
-  <Sidebar />
-  <div class="flex flex-1 items-center justify-center p-6">
     <div class="w-full max-w-2xl">
       <h1 class="mb-6 text-center text-2xl font-bold text-gray-800">Tambah Mahasiswa</h1>
       <StudentForm
@@ -132,4 +128,3 @@
       />
     </div>
   </div>
-</div>

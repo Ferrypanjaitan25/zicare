@@ -5,7 +5,6 @@
   import { onMount } from 'svelte';
   import { get } from 'svelte/store';
   import StudentForm from '$lib/components/StudentForm.svelte';
-  import Sidebar from '$lib/components/Sidebar.svelte';
   import jsPDF from 'jspdf';
 
   let student = null;
@@ -154,8 +153,6 @@
   }
 </script>
 
-<div class="flex min-h-screen bg-gray-100">
-  <Sidebar />
   {#if student}
     <div class="flex flex-1 items-center justify-center p-6">
       <div class="w-full max-w-2xl">
@@ -183,4 +180,3 @@
       <p class="text-center text-gray-500">Data mahasiswa tidak ditemukan.</p>
     </div>
   {/if}
-</div>
