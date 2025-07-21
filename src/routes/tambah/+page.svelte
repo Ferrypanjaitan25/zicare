@@ -2,7 +2,6 @@
   import { studentsStore } from '$lib/stores/students';
   import { goto } from '$app/navigation';
   import StudentForm from '$lib/components/StudentForm.svelte';
-  import Sidebar from '$lib/components/Sidebar.svelte';
   import { get } from 'svelte/store';
 
   let student = {
@@ -111,8 +110,6 @@
   }
 </script>
 
-<div class="flex min-h-screen">
-  <Sidebar />
   <div class="flex flex-1 items-center justify-center bg-gray-100 p-6">
     <div class="w-full max-w-2xl">
       <h1 class="mb-6 text-center text-2xl font-bold">Tambah Mahasiswa</h1>
@@ -127,4 +124,3 @@
       />
     </div>
   </div>
-</div>
