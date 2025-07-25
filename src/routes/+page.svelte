@@ -1,16 +1,17 @@
-<script>
+<script lang=ts>
   import { studentsStore } from '$lib/stores/students';
   import { goto } from '$app/navigation';
   import { onMount } from 'svelte';
   import Notification from '$lib/components/Notification.svelte';
 
-  let students = [];
-  let filteredStudents = [];
+  let students: any[] = [];
+  let filteredStudents: any[] = [];
   let searchNim = '';
   let selectedProdi = '';
   let successMessage = '';
 
   let prodiOptions = ['', 'Sistem Informasi', 'Teknologi Informasi', 'Sarjana Terapan Rekayasa Perangkat Lunak', 'Teknik Komputer', 'Teknik Elektro', 'Informatika', 'Teknik Bioproses', 'Metalurgi', 'Manajemen Rekayasa'];
+  prodiOptions = prodiOptions.sort((a, b) => a.localeCompare(b));
   let jenisKelaminOptions = ['Laki-laki', 'Perempuan'];
 
   onMount(() => {
@@ -25,7 +26,7 @@
       const matchNim = searchNim === '' || student.nim.includes(searchNim);
       const matchProdi = selectedProdi === '' || student.prodi === selectedProdi;
       const matchAngkatan = selectedProdi === '' || student.angkatan === selectedProdi;
-      return matchNim && matchProdi;
+      return matchNim && matchProdi ;
     });
   }
 

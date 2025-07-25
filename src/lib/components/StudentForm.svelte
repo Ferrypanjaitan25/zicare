@@ -5,7 +5,7 @@
 	import InputSelect from './InputSelect.svelte'; 
 	import InputFreeTextOnly from './InputFreeTextOnly.svelte';
 	import FlatpickrInput from './Flatpickinput.svelte';
-	import { createEventDispatcher } from 'svelte';
+	import { createEventDispatcher } from 'svelte';	
 
 	export let student = {
 		nim: '',

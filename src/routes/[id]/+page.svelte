@@ -1,13 +1,12 @@
-<script>
+<script lang="ts">
   import { page } from '$app/stores';
   import { studentsStore } from '$lib/stores/students';
   import { goto } from '$app/navigation';
   import { onMount } from 'svelte';
-  import { get } from 'svelte/store';
   import StudentForm from '$lib/components/StudentForm.svelte';
   import jsPDF from 'jspdf';
 
-  let student = null;
+  let student: any = null;
   let errorMessage = '';
   let successMessage = '';
 
@@ -42,7 +41,7 @@
 
     if (!student) {
       errorMessage = 'Data mahasiswa tidak ditemukan!';
-      return;
+      return; 
     }
 
     if (

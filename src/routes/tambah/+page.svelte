@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { studentsStore } from '$lib/stores/students';
   import { goto } from '$app/navigation';
   import StudentForm from '$lib/components/StudentForm.svelte';
@@ -95,12 +95,22 @@
     }
 
     studentsStore.update(data => {
+      const newStudent = {
+        id: Date.now(),
+        nim: student.nim,
+        nama: student.nama,
+        tempatlahir: student.tempatLahir, 
+        tanggalLahir: student.tanggalLahir,
+        jeniskelamin: student.jenisKelamin, 
+        angkatan: student.angkatan,
+        email: student.email,
+        noHp: student.noHp,
+        prodi: student.prodi
+      };
+
       const newData = [
         ...data,
-        {
-          id: Date.now(),
-          ...student
-        }
+        newStudent
       ];
       return newData.sort((a, b) => a.prodi.localeCompare(b.prodi));
     });
